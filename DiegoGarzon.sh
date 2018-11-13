@@ -9,3 +9,6 @@
 module load anaconda/python3
 cd $PBS_O_WORKDIR # este es el directorio desde donde se ejecuto qsub
 make
+
+mpirun -np 4 ./list1.x
+mpirun -np 2 ./list2.x
