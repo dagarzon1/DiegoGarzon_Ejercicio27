@@ -5,6 +5,7 @@
 #include <time.h>
 #include "mpi.h"
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 double gsf(double x, double mu, double s);
@@ -43,14 +44,21 @@ int main(int argc,char ** argv)
 		}
 		cout<<gs[i]<<endl;
 	}
-    for(int i=0,i<n;i++)
+    char buffer [50];
+    ofstream f_w;
+    stringstream ss;
+    sprintf(buffer,"%d",rank+1);
+    ss << buffer;
+    string s;
+    ss >> s;
+    string fil = "sample_" + s + ".dat";
+    fw.open(fil.c_str());
+    for(int i=0;i<n;i++)
     {
-        ofstream f_w;
-        string fil = "sample_" + string(rank+1) + ".dat";
-        f_w.open (argv[2]);
-        f_w << g[i] << endl ;
-        f_w.close();
+        f_w << gs[i] << endl ;
     }
+        f_w.close();
+
     MPI_Finalize();
 
 return 0;
