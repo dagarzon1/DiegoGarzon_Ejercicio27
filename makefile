@@ -1,4 +1,5 @@
-list1.x:list2.x
-    c++ list1.c -o list1.x
-list2.x:
-    c++ list2.c -o list2.x
+list1.x:list1.c
+    mpic++ list1.c -o list1.x
+    mpic++ list2.c -o list2.x
+clean:
+    rm *.x
