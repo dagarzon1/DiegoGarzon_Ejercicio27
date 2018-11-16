@@ -4,7 +4,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import glob
 
-k = glob.glob("*.dat")
+k = sorted(glob.glob("*.dat"))
 dat = []
 
 for i in k:
